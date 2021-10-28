@@ -51,13 +51,13 @@ function createList() {
   selectMenu.appendChild(option);
 }
 
-function createListItem(id) {
+function createTaskItem(id) {
   const task = document.createElement('li');
   task.setAttribute('data-id', id);
   return task;
 }
 
-function createDeleteItemButton(itemID) {
+function createDeleteTaskButton(itemID) {
   const span = document.createElement('span');
   span.setAttribute('class', 'btns');
 
@@ -67,34 +67,37 @@ function createDeleteItemButton(itemID) {
   span.appendChild(removeBtn);
   return span;
 }
+
 function addTask(text) {
   let createID = dayjs().valueOf();
   // Create a task
-  const task = createListItem(createID);
+  const task = createTaskItem(createID);
   // Create the remove button
-  const span = createDeleteItemButton(createID);
+  const span = createDeleteTaskButton(createID);
 
+  span.addEventListener('click', function (e) {
+    console.log(e.target);
+  });
   // Add to DOM
   task.textContent = text;
   task.appendChild(span);
 
   if (text) return task;
 }
+
 submitBtn.onclick = function (e) {
   e.preventDefault();
+  const liste = [];
   const lists = document.querySelectorAll('.task-container');
+  liste.push(...lists);
+
   const selectedValue = selectMenu.value;
 
-  lists.forEach(function (list) {
-    const listID = list.dataset.id;
-    if (selectedValue === listID) {
-      const element = addTask(input.value);
-      console.log(input.value, element);
-      const ul = list.children[1];
+  const element = liste.find(list => list.dataset.id === selectedValue);
+  const task = addTask(input.value);
 
-      if (element) ul.appendChild(element);
-    }
-  });
+  if (task) element.appendChild(task);
+
   input.value = '';
 };
 
