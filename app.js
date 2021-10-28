@@ -4,6 +4,15 @@ const createListBtn = document.querySelector('.newListBtn');
 const selectMenu = document.querySelector('select');
 const input = document.querySelector('#todoTask');
 
+function deleteTask(itemID) {
+  const items = [];
+  const tasks = document.querySelectorAll('.task-item');
+  items.push(...tasks);
+
+  const task = items.find(item => item.dataset.id === itemID);
+
+  task.remove();
+}
 function createListElement(listID) {
   const taskContainer = document.createElement('div');
   taskContainer.setAttribute('class', 'task-container');
@@ -54,6 +63,7 @@ function createList() {
 function createTaskItem(id) {
   const task = document.createElement('li');
   task.setAttribute('data-id', id);
+  task.setAttribute('class', 'task-item');
   return task;
 }
 
@@ -64,6 +74,11 @@ function createDeleteTaskButton(itemID) {
   const removeBtn = document.createElement('i');
   removeBtn.setAttribute('class', 'fas fa-times-circle removeBtn');
   removeBtn.setAttribute('data-id', itemID);
+  removeBtn.addEventListener('click', function (e) {
+    const element = e.target.dataset.id;
+    console.log(element);
+    deleteTask(element);
+  });
   span.appendChild(removeBtn);
   return span;
 }
@@ -75,9 +90,6 @@ function addTask(text) {
   // Create the remove button
   const span = createDeleteTaskButton(createID);
 
-  span.addEventListener('click', function (e) {
-    console.log(e.target);
-  });
   // Add to DOM
   task.textContent = text;
   task.appendChild(span);
@@ -96,7 +108,7 @@ submitBtn.onclick = function (e) {
   const element = liste.find(list => list.dataset.id === selectedValue);
   const task = addTask(input.value);
 
-  if (task) element.appendChild(task);
+  if (task) element.children[1].appendChild(task);
 
   input.value = '';
 };
