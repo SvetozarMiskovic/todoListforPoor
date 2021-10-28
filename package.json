@@ -1,5 +1,6 @@
 {
-  "name": "http://svetozarmiskovic.github.io/todoListforPoor",
+  "homepage": "http://svetozarmiskovic.github.io/todoListforPoor",
+  "name": "todolistforpoor",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -17,7 +18,6 @@
   "bugs": {
     "url": "https://github.com/SvetozarMiskovic/todoListforPoor/issues"
   },
-  "homepage": "https://github.com/SvetozarMiskovic/todoListforPoor#readme",
   "devDependencies": {
     "gh-pages": "^3.2.3"
   }
