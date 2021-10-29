@@ -40,14 +40,7 @@ function getLS() {
       createList(listLS.listID);
 
       listLS.items.forEach(function (taskItem) {
-        const liste = [];
-        const lists = document.querySelectorAll('.task-container');
-        liste.push(...lists);
-
-        const element = liste.find(list => list.dataset.id === listLS.listID);
-        const task = addTask(taskItem.itemID, taskItem.text);
-
-        if ((task, element)) element.children[1].appendChild(task);
+        getElsAndAppend(listLS.listID, taskItem.itemID, taskItem.text);
       });
     });
 }
@@ -167,19 +160,23 @@ function addTask(createID, text) {
   if (text) return task;
 }
 
-submitBtn.onclick = function (e) {
-  e.preventDefault();
-  let createID = dayjs().valueOf();
+function getElsAndAppend(selectValue, id, inputValue) {
   const liste = [];
   const lists = document.querySelectorAll('.task-container');
   liste.push(...lists);
-
-  const selectedValue = selectMenu.value;
-
-  const element = liste.find(list => list.dataset.id === selectedValue);
-  const task = addTask(createID, input.value);
+  const element = liste.find(list => list.dataset.id === selectValue);
+  const task = addTask(id, inputValue);
 
   if ((task, element)) element.children[1].appendChild(task);
+}
+
+submitBtn.onclick = function (e) {
+  e.preventDefault();
+  let createID = dayjs().valueOf();
+  const selectedValue = selectMenu.value;
+
+  getElsAndAppend(selectedValue, createID, input.value);
+
   saveLS();
   input.value = '';
 };
