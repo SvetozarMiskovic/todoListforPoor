@@ -4,17 +4,17 @@ const createListBtn = document.querySelector('.newListBtn');
 const selectMenu = document.querySelector('select');
 const input = document.querySelector('#todoTask');
 document.addEventListener('DOMContentLoaded', getLS);
+
 function saveLS() {
   const lists = document.querySelectorAll('.task-container');
-
   let todoList = [];
 
   lists.forEach(function (list) {
-    const task = list.childNodes[1].childNodes;
+    const tasks = list.childNodes[1].childNodes;
     let data = { listID: '', items: [] };
     data.listID = list.dataset.id;
 
-    task.forEach(function (t) {
+    tasks.forEach(function (t) {
       let taskData = { itemID: '', text: '' };
       // Add item ID to task data
       taskData.itemID = t.dataset.id;
@@ -24,7 +24,6 @@ function saveLS() {
       data.items.push(taskData);
       taskData = { itemID: '', text: '' };
     });
-
     todoList.push(data);
 
     data = { listID: '', items: [] };
@@ -77,6 +76,7 @@ function getListIdAndRemove(e) {
 
   deleteList(elementID);
   saveLS();
+  location.reload();
 }
 
 function createDeleteListButton(listID) {
