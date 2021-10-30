@@ -1,7 +1,7 @@
-export function createOption(listID) {
+export function createOption(listID, text) {
   const option = document.createElement('option');
   option.setAttribute('data-id', listID);
   option.setAttribute('value', listID);
-  option.innerText = 'New list';
+  option.innerText = text;
   return option;
 }

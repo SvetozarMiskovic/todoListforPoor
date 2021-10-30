@@ -9,7 +9,7 @@ export function getElsAndAppend(selectValue, id, inputValue) {
   const task = addTask(id, inputValue);
 
   if (task && element) {
-    element.children[1].appendChild(task);
+    element.children[2].appendChild(task);
   } else {
     return;
   }

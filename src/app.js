@@ -20,19 +20,23 @@ submitBtn.onclick = function (e) {
     const selectedValue = selectMenu.value;
     getElsAndAppend(selectedValue, createID, input.value);
     saveLS();
-    input.value = '';
   } else {
     if (input.value != '') {
-      createList(createID);
+      const listPrompt = prompt('Please name your list!', 'New List');
+      const listName = listPrompt ? listPrompt : 'New List';
+      createList(createID, listName);
       getElsAndAppend(createID, createID + 1, input.value);
       saveLS();
-      input.value = '';
     }
   }
+  input.value = '';
 };
 
 createListBtn.onclick = function () {
   let createID = dayjs().valueOf();
-  createList(createID);
+  const listPrompt = prompt('Please name your list!', 'New List');
+  const listName = listPrompt ? listPrompt : 'New List';
+  console.log(listName);
+  createList(createID, listName);
   saveLS();
 };
