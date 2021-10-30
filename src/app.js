@@ -1,3 +1,4 @@
+import './style.css';
 import { getElsAndAppend } from './getElsAndAppend';
 import { saveLS } from './saveLS';
 import { getLS } from './getLS';

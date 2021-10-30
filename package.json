@@ -21,7 +21,9 @@
     "url": "https://github.com/SvetozarMiskovic/todoListforPoor/issues"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "css-loader": "^6.5.0",
+    "gh-pages": "^3.2.3",
+    "style-loader": "^3.3.1"
   },
   "dependencies": {
     "webpack": "^5.61.0",
