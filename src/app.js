@@ -15,21 +15,20 @@ document.addEventListener('DOMContentLoaded', getLS);
 submitBtn.onclick = function (e) {
   e.preventDefault();
   const elNum = document.querySelectorAll('.task-container').length;
-  console.log(elNum);
+  let createID = dayjs().valueOf();
   if (elNum > 0) {
-    let createID = dayjs().valueOf();
     const selectedValue = selectMenu.value;
-
     getElsAndAppend(selectedValue, createID, input.value);
-
     saveLS();
     input.value = '';
   } else {
-    let createID = dayjs().valueOf();
-    createList(createID);
-    getElsAndAppend(createID, createID, input.value);
-    saveLS();
-    input.value = '';
+    let newTaskID = dayjs().valueOf() + 1;
+    if (input.value != '') {
+      createList(createID);
+      getElsAndAppend(createID, newTaskID, input.value);
+      saveLS();
+      input.value = '';
+    }
   }
 };
 
