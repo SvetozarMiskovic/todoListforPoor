@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', getLS);
 submitBtn.onclick = function (e) {
   e.preventDefault();
   const elNum = document.querySelectorAll('.task-container').length;
+
   let createID = dayjs().valueOf();
+
   if (elNum > 0) {
     const selectedValue = selectMenu.value;
     getElsAndAppend(selectedValue, createID, input.value);
@@ -34,9 +36,10 @@ submitBtn.onclick = function (e) {
 
 createListBtn.onclick = function () {
   let createID = dayjs().valueOf();
+  
   const listPrompt = prompt('Please name your list!', 'New List');
   const listName = listPrompt ? listPrompt : 'New List';
-  console.log(listName);
+
   createList(createID, listName);
   saveLS();
 };

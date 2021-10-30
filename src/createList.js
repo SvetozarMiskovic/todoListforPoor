@@ -6,7 +6,7 @@ import { createOption } from './createOption';
 import { selectMenu } from './app';
 import { createListTitle } from './createListTitle';
 
-export function createList(createID, text = 'new list') {
+export function createList(createID, text) {
   // Create a task container
 
   const taskContainer = createListElement(createID);

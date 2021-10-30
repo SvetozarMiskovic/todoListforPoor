@@ -6,7 +6,6 @@ export function getLS() {
   if (lists)
     lists.forEach(function (listLS) {
       createList(listLS.listID, listLS.title);
-      console.log(listLS.title);
 
       listLS.items.forEach(function (taskItem) {
         getElsAndAppend(listLS.listID, taskItem.itemID, taskItem.text);
