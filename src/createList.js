@@ -21,5 +21,4 @@ export function createList(createID) {
   const option = createOption(createID);
   // Add option to DOM
   selectMenu.appendChild(option);
-  return;
 }

@@ -14,13 +14,23 @@ document.addEventListener('DOMContentLoaded', getLS);
 
 submitBtn.onclick = function (e) {
   e.preventDefault();
-  let createID = dayjs().valueOf();
-  const selectedValue = selectMenu.value;
+  const elNum = document.querySelectorAll('.task-container').length;
+  console.log(elNum);
+  if (elNum > 0) {
+    let createID = dayjs().valueOf();
+    const selectedValue = selectMenu.value;
 
-  getElsAndAppend(selectedValue, createID, input.value);
+    getElsAndAppend(selectedValue, createID, input.value);
 
-  saveLS();
-  input.value = '';
+    saveLS();
+    input.value = '';
+  } else {
+    let createID = dayjs().valueOf();
+    createList(createID);
+    getElsAndAppend(createID, createID, input.value);
+    saveLS();
+    input.value = '';
+  }
 };
 
 createListBtn.onclick = function () {
