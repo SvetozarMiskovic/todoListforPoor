@@ -22,10 +22,9 @@ submitBtn.onclick = function (e) {
     saveLS();
     input.value = '';
   } else {
-    let newTaskID = dayjs().valueOf() + 1;
     if (input.value != '') {
       createList(createID);
-      getElsAndAppend(createID, newTaskID, input.value);
+      getElsAndAppend(createID, createID + 1, input.value);
       saveLS();
       input.value = '';
     }
