@@ -23,12 +23,16 @@ submitBtn.onclick = function (e) {
     getElsAndAppend(selectedValue, createID, input.value);
     saveLS();
   } else {
-    if (input.value != '') {
+    if (input.value) {
       const listPrompt = prompt('Please name your list!', 'New List');
-      const listName = listPrompt ? listPrompt : 'New List';
-      createList(createID, listName);
-      getElsAndAppend(createID, createID + 1, input.value);
-      saveLS();
+      if (!listPrompt) {
+        input.value = '';
+        return;
+      } else {
+        createList(createID, listPrompt);
+        getElsAndAppend(createID, createID + 1, input.value);
+        saveLS();
+      }
     }
   }
   input.value = '';
@@ -36,10 +40,13 @@ submitBtn.onclick = function (e) {
 
 createListBtn.onclick = function () {
   let createID = dayjs().valueOf();
-  
-  const listPrompt = prompt('Please name your list!', 'New List');
-  const listName = listPrompt ? listPrompt : 'New List';
 
-  createList(createID, listName);
-  saveLS();
+  const listPrompt = prompt('Please name your list!', 'New List');
+  if (!listPrompt) {
+    input.value = '';
+    return;
+  } else {
+    createList(createID, listPrompt);
+    saveLS();
+  }
 };
