@@ -4,11 +4,10 @@ export function saveLS() {
 
   lists.forEach(function (list) {
     const tasks = list.childNodes[2].childNodes;
-    let data = { listID: '', items: [], title: '' };
+    let data = { listID: '', items: [], title: '', editID: '' };
     data.listID = list.dataset.id;
-    data.title = list.children[1].textContent
-      ? list.children[1].textContent
-      : 'New List';
+    data.title = list.children[1].textContent;
+    data.editID = list.dataset.edit ? list.dataset.edit : '';
     tasks.forEach(function (t) {
       let taskData = { itemID: '', text: '' };
       // Add item ID to task data
@@ -21,7 +20,7 @@ export function saveLS() {
     });
     todoList.push(data);
 
-    data = { listID: '', items: [], title: '' };
+    data = { listID: '', items: [], title: '', editID: '' };
   });
 
   localStorage.setItem('TodoLists', JSON.stringify(todoList));

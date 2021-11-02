@@ -3,6 +3,7 @@ import { getElsAndAppend } from './getElsAndAppend';
 import { saveLS } from './saveLS';
 import { getLS } from './getLS';
 import { createList } from './createList';
+import { recordEditID } from './recordEditID';
 export const taskSection = document.querySelector('.task-section');
 export const selectMenu = document.querySelector('select');
 
@@ -20,7 +21,9 @@ submitBtn.onclick = function (e) {
 
   if (elNum > 0) {
     const selectedValue = selectMenu.value;
-    getElsAndAppend(selectedValue, createID, input.value);
+
+    const element = getElsAndAppend(selectedValue, createID, input.value);
+    recordEditID(element);
     saveLS();
   } else {
     if (input.value) {
@@ -29,8 +32,9 @@ submitBtn.onclick = function (e) {
         input.value = '';
         return;
       } else {
-        createList(createID, listPrompt);
+        const element = createList(createID, listPrompt);
         getElsAndAppend(createID, createID + 1, input.value);
+        recordEditID(element);
         saveLS();
       }
     }

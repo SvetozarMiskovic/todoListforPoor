@@ -6,10 +6,10 @@ import { createOption } from './createOption';
 import { selectMenu } from './app';
 import { createListTitle } from './createListTitle';
 
-export function createList(createID, text) {
+export function createList(createID, text, editID = '') {
   // Create a task container
 
-  const taskContainer = createListElement(createID);
+  const taskContainer = createListElement(createID, editID);
   const removeBtn = createDeleteListButton(createID);
   const title = createListTitle(createID, text);
   const ul = createTaskList(createID);
@@ -24,4 +24,6 @@ export function createList(createID, text) {
   const option = createOption(createID, title.textContent);
   // Add option to DOM
   selectMenu.appendChild(option);
+
+  return taskContainer;
 }

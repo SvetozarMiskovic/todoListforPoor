@@ -10,6 +10,7 @@ export function getElsAndAppend(selectValue, id, inputValue) {
 
   if (task && element) {
     element.children[2].appendChild(task);
+    return element;
   } else {
     return;
   }
