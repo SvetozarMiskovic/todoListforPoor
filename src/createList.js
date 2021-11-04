@@ -3,7 +3,7 @@ import { createDeleteListButton } from './createDeleteListButton';
 import { createTaskList } from './createTaskList';
 import { taskSection } from './app';
 import { createOption } from './createOption';
-import { selectMenu } from './app';
+import { selectList } from './app';
 import { createListTitle } from './createListTitle';
 
 export function createList(createID, text, editID = '') {
@@ -23,7 +23,7 @@ export function createList(createID, text, editID = '') {
   // Create the select item
   const option = createOption(createID, title.textContent);
   // Add option to DOM
-  selectMenu.appendChild(option);
+  selectList.appendChild(option);
 
   return taskContainer;
 }
