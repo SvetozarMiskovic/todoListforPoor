@@ -1,4 +1,6 @@
 import { taskSection } from './app';
+
+import { refreshDOM } from './refreshDOM';
 import { saveLS } from './saveLS';
 
 export function sortByOldest(element) {
@@ -10,6 +12,5 @@ export function sortByOldest(element) {
   taskSection.append(item);
 
   saveLS();
-
-  location.reload();
+  refreshDOM();
 }

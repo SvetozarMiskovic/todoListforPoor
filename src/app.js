@@ -16,7 +16,6 @@ const createListBtn = document.querySelector('.newListBtn');
 const input = document.querySelector('#todoTask');
 document.addEventListener('DOMContentLoaded', getLS);
 
-console.log(selectSort.value);
 submitBtn.onclick = function (e) {
   e.preventDefault();
   const elNum = document.querySelectorAll('.task-container').length;

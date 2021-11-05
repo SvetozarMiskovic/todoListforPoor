@@ -1,5 +1,8 @@
 import { taskSection } from './app';
+
 import { saveLS } from './saveLS';
+
+import { refreshDOM } from './refreshDOM';
 
 export function sortByNewest(element) {
   const lists = document.querySelectorAll('.task-container');
@@ -10,6 +13,5 @@ export function sortByNewest(element) {
   taskSection.prepend(item);
 
   saveLS();
-
-  location.reload();
+  refreshDOM();
 }
