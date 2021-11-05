@@ -10,11 +10,12 @@ export function deleteTask(itemID) {
   const task = items.find(item => item.dataset.id === itemID);
   const taskContainer = task.parentElement.parentElement;
 
+  task.remove();
+
   const editEl = recordEditID(taskContainer);
   if (sortValue == 'Newest updates') {
     sortByNewest(editEl);
   } else if (sortValue == 'Oldest updates') {
     sortByOldest(editEl);
   }
-  task.remove();
 }
