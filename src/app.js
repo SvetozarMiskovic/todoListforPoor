@@ -6,6 +6,8 @@ import { createList } from './createList';
 import { recordEditID } from './recordEditID';
 import { sortByNewest } from './sortByNewest';
 import { sortByOldest } from './sortByOldest';
+import { sortByChange } from './sortByChange';
+import { refreshDOM } from './refreshDOM';
 export const taskSection = document.querySelector('.task-section');
 export const selectList = document.getElementById('select-list');
 export const selectSort = document.getElementById('sort');
@@ -65,5 +67,27 @@ createListBtn.onclick = function () {
   } else {
     createList(createID, listPrompt);
     saveLS();
+  }
+};
+
+function compareAsc(a, b) {
+  return b.dataset.edit - a.dataset.edit;
+}
+
+function compareDesc(a, b) {
+  return a.dataset.edit - b.dataset.edit;
+}
+selectSort.onchange = function () {
+  const lists = document.querySelectorAll('.task-container');
+  const liste = [...lists];
+  if (selectSort.value === 'Newest updates') {
+    const sorted = liste.sort(compareAsc);
+    console.log(sorted);
+    refreshDOM(sorted);
+  } else {
+    const sorted = liste.sort(compareDesc);
+    console.log(sorted);
+    refreshDOM(sorted);
+    console.log('Staro');
   }
 };

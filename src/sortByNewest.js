@@ -5,6 +5,7 @@ import { saveLS } from './saveLS';
 import { refreshDOM } from './refreshDOM';
 
 export function sortByNewest(element) {
+  // When something is being added or removed
   const lists = document.querySelectorAll('.task-container');
   const liste = [];
   liste.push(...lists);
