@@ -2,7 +2,7 @@ import './style.css';
 import { getElsAndAppend } from './getElsAndAppend';
 import { saveLS } from './saveLS';
 import { getLS } from './getLS';
-import { createList } from './createList';
+import { createList } from './renderElFunctions/createList';
 import { recordEditID } from './recordEditID';
 import { sortByNewest } from './sortByNewest';
 import { sortByOldest } from './sortByOldest';
@@ -30,9 +30,9 @@ submitBtn.onclick = function (e) {
 
     const element = getElsAndAppend(selectedValue, createID, input.value);
     const editEl = recordEditID(element);
-    if (sortValue == 'Newest updates') {
+    if (sortValue === 'Newest updates') {
       sortByNewest(editEl);
-    } else if (sortValue == 'Oldest updates') {
+    } else if (sortValue === 'Oldest updates') {
       sortByOldest(editEl);
     }
     saveLS();
@@ -46,9 +46,9 @@ submitBtn.onclick = function (e) {
         const element = createList(createID, listPrompt);
         getElsAndAppend(createID, createID + 1, input.value);
         const editEl = recordEditID(element);
-        if (sortValue == 'Newest updates') {
+        if (sortValue === 'Newest updates') {
           sortByNewest(editEl);
-        } else if (sortValue == 'Oldest updates') {
+        } else if (sortValue === 'Oldest updates') {
           sortByOldest(editEl);
         }
         saveLS();
@@ -66,19 +66,32 @@ createListBtn.onclick = function () {
     input.value = '';
     return;
   } else {
-    createList(createID, listPrompt);
+    const element = createList(createID, listPrompt);
+
+    if (selectSort.value === 'Newest updates') {
+      taskSection.prepend(element);
+    } else {
+      taskSection.append(element);
+    }
     saveLS();
+    refreshDOM();
   }
 };
 
-selectSort.onchange = function () {
+selectSort.onchange = function (e) {
   const lists = document.querySelectorAll('.task-container');
   const liste = [...lists];
-  if (selectSort.value === 'Newest updates') {
-    const sorted = liste.sort(compareAsc);
-    refreshDOM(sorted);
-  } else {
-    const sorted = liste.sort(compareDesc);
-    refreshDOM(sorted);
-  }
+  const selected = e.target.value;
+
+  const sorted = liste.sort(
+    selected === 'Newest updates' ? compareAsc : compareDesc
+  );
+  refreshDOM(sorted);
+  // if (selectSort.value === 'Newest updates') {
+  //   const sorted = liste.sort(compareAsc);
+  //   refreshDOM(sorted);
+  // } else {
+  //   const sorted = liste.sort(compareDesc);
+  //   refreshDOM(sorted);
+  // }
 };

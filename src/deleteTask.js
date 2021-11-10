@@ -3,9 +3,9 @@ import { selectSort } from './app';
 import { sortByNewest } from './sortByNewest';
 import { sortByOldest } from './sortByOldest';
 export function deleteTask(itemID) {
-  const items = [];
   const tasks = document.querySelectorAll('.task-item');
-  items.push(...tasks);
+  const items = [...tasks];
+
   const sortValue = selectSort.value;
   const task = items.find(item => item.dataset.id === itemID);
   const taskContainer = task.parentElement.parentElement;
@@ -13,9 +13,9 @@ export function deleteTask(itemID) {
   task.remove();
 
   const editEl = recordEditID(taskContainer);
-  if (sortValue == 'Newest updates') {
+  if (sortValue === 'Newest updates') {
     sortByNewest(editEl);
-  } else if (sortValue == 'Oldest updates') {
+  } else if (sortValue === 'Oldest updates') {
     sortByOldest(editEl);
   }
 }

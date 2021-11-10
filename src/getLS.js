@@ -1,5 +1,5 @@
 import { getElsAndAppend } from './getElsAndAppend';
-import { createList } from './createList';
+import { createList } from './renderElFunctions/createList';
 
 export function getLS() {
   const lists = JSON.parse(localStorage.getItem('TodoLists'));

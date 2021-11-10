@@ -1,4 +1,4 @@
-import { getIdAndRemove } from './getIdAndRemove';
+import { getIdAndRemove } from '../getIdAndRemove';
 
 export function createDeleteTaskButton(itemID) {
   const span = document.createElement('span');

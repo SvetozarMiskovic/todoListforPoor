@@ -1,5 +1,5 @@
-import { createTaskItem } from './createTaskItem';
-import { createDeleteTaskButton } from './createDeleteTaskButton';
+import { createTaskItem } from './renderElFunctions/createTaskItem';
+import { createDeleteTaskButton } from './renderElFunctions/createDeleteTaskButton';
 
 export function addTask(createID, text) {
   // Create a task

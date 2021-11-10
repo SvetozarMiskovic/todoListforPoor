@@ -1,12 +1,12 @@
 import { createListElement } from './createListElement';
 import { createDeleteListButton } from './createDeleteListButton';
 import { createTaskList } from './createTaskList';
-import { taskSection } from './app';
+import { taskSection, selectList } from '../app';
 import { createOption } from './createOption';
-import { selectList } from './app';
+
 import { createListTitle } from './createListTitle';
 
-export function createList(createID, text, editID = '') {
+export function createList(createID, text, editID = createID) {
   // Create a task container
 
   const taskContainer = createListElement(createID, editID);

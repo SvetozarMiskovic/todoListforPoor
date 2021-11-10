@@ -1,4 +1,4 @@
-import { getListIdAndRemove } from './getListIdAndRemove';
+import { getListIdAndRemove } from '../getListIdAndRemove';
 
 export function createDeleteListButton(listID) {
   const removeBtn = document.createElement('i');
