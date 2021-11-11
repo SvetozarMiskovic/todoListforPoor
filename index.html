@@ -49,5 +49,28 @@
     
     <script src="https://unpkg.com/dayjs@1.10.7/dayjs.min.js"></script>
     <script src="./dist/bundle.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyA5nouHr1CvBjyjDFiEABT5cgzYh2zbCog",
+        authDomain: "todo-list-e8735.firebaseapp.com",
+        projectId: "todo-list-e8735",
+        storageBucket: "todo-list-e8735.appspot.com",
+        messagingSenderId: "237387626426",
+        appId: "1:237387626426:web:adbc0d01b6a1c3da460f83",
+        measurementId: "G-27QDMXJPZZ"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </body>
 </html>
