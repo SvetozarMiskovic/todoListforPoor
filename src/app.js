@@ -9,6 +9,7 @@ import { sortByOldest } from './sortByOldest';
 import { refreshDOM } from './refreshDOM';
 import { compareAsc } from './compareAsc';
 import { compareDesc } from './compareDesc';
+
 export const taskSection = document.querySelector('.task-section');
 export const selectList = document.getElementById('select-list');
 export const selectSort = document.getElementById('sort');
