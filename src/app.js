@@ -1,26 +1,5 @@
-// FIREBASE //
-import { initializeApp } from 'firebase/app';
-import { getDatabase } from 'firebase/database';
-// FIREBASE CONFIG //
-const firebaseConfig = {
-  apiKey: 'AIzaSyA5nouHr1CvBjyjDFiEABT5cgzYh2zbCog',
-  authDomain: 'todo-list-e8735.firebaseapp.com',
-  databaseURL:
-    'https://todo-list-e8735-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'todo-list-e8735',
-  storageBucket: 'todo-list-e8735.appspot.com',
-  messagingSenderId: '237387626426',
-  appId: '1:237387626426:web:adbc0d01b6a1c3da460f83',
-  measurementId: 'G-27QDMXJPZZ',
-};
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-console.log(app);
-console.log(db);
-// END OF FIREBASE CONFIG //
-
-// END OF FIREBASE IMPORTS //
 import './style.css';
+import { writeDB } from './writeDB';
 import { getElsAndAppend } from './getElsAndAppend';
 import { saveLS } from './saveLS';
 import { getLS } from './getLS';
@@ -38,10 +17,12 @@ export const selectSort = document.getElementById('sort');
 
 const submitBtn = document.getElementById('submitBtn');
 const createListBtn = document.querySelector('.newListBtn');
-
 const input = document.querySelector('#todoTask');
+
+// On content load
 document.addEventListener('DOMContentLoaded', getLS);
 
+// Events
 submitBtn.onclick = function (e) {
   e.preventDefault();
   const elNum = document.querySelectorAll('.task-container').length;
@@ -59,6 +40,7 @@ submitBtn.onclick = function (e) {
       sortByOldest(editEl);
     }
     saveLS();
+    writeDB();
   } else {
     if (input.value) {
       const listPrompt = prompt('Please name your list!', 'New List');
@@ -74,7 +56,9 @@ submitBtn.onclick = function (e) {
         } else if (sortValue === 'Oldest updates') {
           sortByOldest(editEl);
         }
+
         saveLS();
+        writeDB();
       }
     }
   }
@@ -98,6 +82,7 @@ createListBtn.onclick = function () {
     }
     saveLS();
     refreshDOM();
+    writeDB();
   }
 };
 
@@ -110,11 +95,4 @@ selectSort.onchange = function (e) {
     selected === 'Newest updates' ? compareAsc : compareDesc
   );
   refreshDOM(sorted);
-  // if (selectSort.value === 'Newest updates') {
-  //   const sorted = liste.sort(compareAsc);
-  //   refreshDOM(sorted);
-  // } else {
-  //   const sorted = liste.sort(compareDesc);
-  //   refreshDOM(sorted);
-  // }
 };

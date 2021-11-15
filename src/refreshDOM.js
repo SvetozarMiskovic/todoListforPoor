@@ -3,6 +3,7 @@ import { createList } from './renderElFunctions/createList';
 import { getElsAndAppend } from './getElsAndAppend';
 import { saveLS } from './saveLS';
 import { selectList } from './app';
+import { writeDB } from './writeDB';
 export function refreshDOM(element = null) {
   const lists = document.querySelectorAll('.task-container');
 
@@ -35,5 +36,6 @@ export function refreshDOM(element = null) {
       });
     });
   }
+  writeDB();
   saveLS();
 }
