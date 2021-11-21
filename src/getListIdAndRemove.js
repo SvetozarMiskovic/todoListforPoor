@@ -8,7 +8,7 @@ export function getListIdAndRemove(e) {
 
   deleteList(elementID);
   removeDB(elementID);
-  writeDB();
+
   saveLS();
   refreshDOM();
 }
