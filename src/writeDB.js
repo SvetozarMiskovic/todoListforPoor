@@ -40,7 +40,6 @@ export function writeDB() {
         text: '',
       };
     });
-
     // WRITE TO FIREBASE DATABASE
     set(ref(db, 'Todo/' + lid), {
       editID: eid,
